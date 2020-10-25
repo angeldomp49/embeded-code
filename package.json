@@ -1,0 +1,16 @@
+{
+  "name": "embeded-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
