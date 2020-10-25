@@ -19,17 +19,82 @@ class DatePicker extends React.Component{
             31,28,31,30,31,30,31,31,30,31,30,31
         ],
         actualMonth: 0,
-        rowsCalendar: [],
+        rowsCalendar: () => {
+            let i = 1;
+            let rows = [];
+            const numberDays = this.state.daysForMonth[this.state.actualMonth];
+        
+            while(i< numberDays){
+                let cols = [];
+                for(let k=1;k<=7;k++){
+                    cols.push(i);
+                    if(i >= numberDays){
+                        break;
+                    }
+                    i++;
+                }
+                rows.push(cols);
+            }
+            return rows;
+        },
+        actions:{
+            prevMonth: () => {
+                if( this.state.actualMonth == 0 ){
+                    this.setState({ actualMonth: 11 });
+                }
+                else{
+                    this.setState({ actualMonth: this.state.actualMonth-1 });
+                }
+            },
+            nextMonth: () => {
+                console.log("dentro de nextMonth");
+                if( this.state.actualMonth == 11 ){
+                    this.setState({ actualMonth: 0 });
+                }
+                else{
+                    this.setState({ actualMonth: this.state.actualMonth+1 });
+                }
+            },
+            fillDays: () => {
+                let i = 1;
+                let rows = [];
+                const numberDays = this.state.daysForMonth[this.state.actualMonth];
+            
+                while(i< numberDays){
+                    let cols = [];
+                    for(let k=1;k<=7;k++){
+                        cols.push(i);
+                        if(i >= numberDays){
+                            break;
+                        }
+                        i++;
+                    }
+                    rows.push(cols);
+                }
+                this.setState({rowsCalendar: rows});
+            },
+            DaysTable: () => {
+                return(
+                    this.state.rowsCalendar().map( (row,index) => {
+                        return(
+                            <tr key={index}>{
+                                row.map( (col) => {
+                                    return(<td key={col}>{col}</td>);
+                                } )
+                            }
+                            </tr>
+                        );
+                    } )
+                );
+            },
+            selectDay: (numberDay) => {
+
+            }
+        }
     };
 
     constructor(props){
         super(props);
-
-        
-
-         this.prevMonth = this.prevMonth.bind(this);
-        // this.prevMonth = this.prevMonth.bind(this);
-        // this.fillDays  = this.fillDays.bind(this);
     }
 
     render(){
@@ -56,6 +121,7 @@ class DatePicker extends React.Component{
                     <thead><tr>{this.state.dayWeekName.map( day => {return(<td key={day}>{day}</td>);} )}</tr></thead>
                     <tbody>
                         {
+                            this.state.actions.DaysTable()
                         }
                     </tbody>
                     </table>
@@ -67,63 +133,6 @@ class DatePicker extends React.Component{
         </div>
         );
     }
-}
-
-const prevMonth = () => {
-    if( this.state.actualMonth == 0 ){
-        this.setState({ actualMonth: 11 });
-    }
-    else{
-        this.setState({ actualMonth: this.state.actualMonth-1 });
-    }
-}
-
-function nextMonth(){
-    if( this.state.actualMonth == 11 ){
-        this.setState({ actualMonth: 0 });
-    }
-    else{
-        this.setState({ actualMonth: this.state.actualMonth+1 });
-    }
-}
-
-function selectDay(numberDay){
-
-}
-
-function fillDays(){
-    let i = 1;
-    let rows = [];
-
-    while(i<= this.state.daysForMonth[this.state.actualMonth]){
-        let cols = [];
-        for(k=1;k<=7;k++){
-            cols.push(i);
-            if(i >= this.state.daysForMonth[this.state.actualMonth]){
-                break;
-            }
-            i++;
-        }
-        rows.push(cols);
-    }
-    this.setState({rowsCalendar: rows});
-}
-
-const DaysTable = () => {
-    this.fillDays();
-
-    return(
-        this.state.rowsCalendar.map( (row,index) => {
-            return(
-                <tr key={index}>{
-                    row.map( (col) => {
-                        return(<td key={col}>{col}</td>);
-                    } )
-                }
-                </tr>
-            );
-        } )
-    );
 }
 
 export default DatePicker;

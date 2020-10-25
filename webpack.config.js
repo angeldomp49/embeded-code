@@ -22,7 +22,8 @@ module.exports = {
               '@babel/preset-env',
           ],
           plugins:[
-          '@babel/plugin-proposal-class-properties'
+          '@babel/plugin-transform-flow-strip-types',
+          '@babel/plugin-proposal-class-properties',
         ]
           }
         }}

@@ -10,3 +10,11 @@ utilizacion del workflow GitFlow
 -features (date-picker, etc. nace de develop y una vez finalizada se une a develop)
 -hotfix(correccion de bugs en producción, nace de master y una vez finalizada se une a master)
 -release(version proxima a lanzamiento y buena para hacer test o compartir para que otros comiencen con la proxima version, nace de develop y una vez finalizada se mezcla con develop y master)
+
+hay un bug en babel que no permite enlazar las funciones en el constructor mediante el metodo bind, de la forma
+
+this.nextMonth = this.nextMonth.bind(this);
+
+por lo que declaramos las funciones en el state de la forma
+
+nextMonth: () => { // codigo}
