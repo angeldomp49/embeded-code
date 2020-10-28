@@ -1,4 +1,6 @@
 import React from 'react';
+import * as Calendar from "./Constants";
+import * as Calculate from "./Calculate";
 
 class DatePicker extends React.Component{
 
@@ -21,14 +23,27 @@ class DatePicker extends React.Component{
         actualMonth: 0,
         rowsCalendar: () => {
             let i = 1;
+            let dayMonth = 1;
             let rows = [];
-            const numberDays = this.state.daysForMonth[this.state.actualMonth];
+            const numberDays = Calendar.MONTHS[this.state.actualMonth].DAYS;
+            const offset = Calculate
+            .firstWeekDayMonth(this.state.actualMonth, document.getElementById("mt_ec_dp_year").value);
+            const totalBoxes = numberDays + offset;
         
-            while(i< numberDays){
+            while(i < totalBoxes){
+
                 let cols = [];
                 for(let k=1;k<=7;k++){
-                    cols.push(i);
-                    if(i >= numberDays){
+
+                    if( i <= offset ){
+                        cols.push();
+                    }
+                    else{
+                        cols.push(dayMonth);
+                        dayMonth++;
+                    }
+
+                    if(i >= totalBoxes){
                         break;
                     }
                     i++;
@@ -47,7 +62,6 @@ class DatePicker extends React.Component{
                 }
             },
             nextMonth: () => {
-                console.log("dentro de nextMonth");
                 if( this.state.actualMonth == 11 ){
                     this.setState({ actualMonth: 0 });
                 }
@@ -58,9 +72,9 @@ class DatePicker extends React.Component{
             fillDays: () => {
                 let i = 1;
                 let rows = [];
-                const numberDays = this.state.daysForMonth[this.state.actualMonth];
+                const numberDays = Calendar.MONTHS[this.state.actualMonth].DAYS;
             
-                while(i< numberDays){
+                while(i < numberDays){
                     let cols = [];
                     for(let k=1;k<=7;k++){
                         cols.push(i);
@@ -105,7 +119,7 @@ class DatePicker extends React.Component{
                 <div className="mt_ec_dp_form_section">
                     <button onClick={()=>{this.prevMonth();}}>prev</button>
                     <label>{this.state.monthNames[this.state.actualMonth]}</label>
-                    <select name="mt_ec_dp_year">
+                    <select name="mt_ec_dp_year" id="mt_ec_dp_year">
                         {
                             this.state.years.map((year)=>{
                                 return(
