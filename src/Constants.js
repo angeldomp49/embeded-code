@@ -1,8 +1,8 @@
 export const FIRST_DATE = {
     YEAR: 2000,
-    MONTH: 01,
-    DAY:   01,
-    WEEK_DAY: 05
+    MONTH: 1,
+    DAY:   1,
+    WEEK_DAY: 5
 };
 
 export const WEEK_DAYS = {

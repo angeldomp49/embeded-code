@@ -14,8 +14,8 @@ export function firstWeekDayYear(year){
     for(let i = Calendar.FIRST_DATE.YEAR; i < year; i++){
         offset++;
         if( isLeapYear(i) ) offset ++;
+        offset = alwaysWeekDay(offset);
     }
-    offset = alwaysWeekDay(offset);
 
     return offset;
 }
@@ -25,13 +25,12 @@ export function firstWeekDayMonth(month, year){
     let firstDay = firstWeekDayYear(year);
 
     for(let i = 0; i < month; i++){
+        if( i == 1 && isLeapYear(year) && month > 1 ){
+            firstDay++;
+        }
         firstDay += (Calendar.MONTHS[i].DAYS - 28 );
+        firstDay = alwaysWeekDay(firstDay);
     }
 
-    if( isLeapYear(year) && month > 1 ){
-        firstDay++;
-    }
-
-    firstDay = alwaysWeekDay(firstDay);
     return firstDay;
 }
