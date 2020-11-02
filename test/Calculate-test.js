@@ -31,6 +31,6 @@ let i = Calculate.firstWeekDayMonth(5,2010);
 console.log("Expected 1, returned: "+i);
 
 let j = Calculate.firstWeekDayMonth(10,2016);
-console.log("Expected 5, returned: "+j);
+console.log("Expected 1, returned: "+j);
 
 }

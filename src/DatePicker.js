@@ -5,23 +5,11 @@ import * as Calculate from "./Calculate";
 class DatePicker extends React.Component{
 
     state = {
-        years: [
-            2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030
-        ],
-        monthNames: [
-            "enero","febrero","marzo","abril",
-            "mayo","junio","julio","agosto",
-            "septiembre","octubre","noviembre","diciembre"
-        ],
-        dayWeekName: [
-            "lunes","martes","miercoles",
-            "jueves","viernes","sabado","domingo"
-        ],
-        daysForMonth: [
-            31,28,31,30,31,30,31,31,30,31,30,31
-        ],
+        years: [ 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030 ],
         actualMonth: 0,
-        rowsCalendar: () => {
+        actualYear: 2020,
+        daysCalendar: null,
+        fillCalendar: () => {
             let i = 1;
             let dayMonth = 1;
             let rows = [];
@@ -30,13 +18,13 @@ class DatePicker extends React.Component{
             .firstWeekDayMonth(this.state.actualMonth, document.getElementById("mt_ec_dp_year").value);
             const totalBoxes = numberDays + offset;
         
-            while(i < totalBoxes){
+            while(i < totalBoxes-1){
 
                 let cols = [];
                 for(let k=1;k<=7;k++){
 
                     if( i <= offset ){
-                        cols.push();
+                        cols.push("");
                     }
                     else{
                         cols.push(dayMonth);
@@ -55,45 +43,35 @@ class DatePicker extends React.Component{
         actions:{
             prevMonth: () => {
                 if( this.state.actualMonth == 0 ){
-                    this.setState({ actualMonth: 11 });
+                    this.setState({ actualMonth: 11 }, () => {
+                        this.setState({
+                            daysCalendar: this.state.actions.DaysTable()
+                        });
+                    });
                 }
                 else{
-                    this.setState({ actualMonth: this.state.actualMonth-1 });
+                    this.setState({ actualMonth: this.state.actualMonth-1 }, () => {
+                        this.setState({
+                            daysCalendar: this.state.actions.DaysTable()
+                        });
+                    });
                 }
             },
             nextMonth: () => {
                 if( this.state.actualMonth == 11 ){
-                    this.setState({ actualMonth: 0 });
+                    this.setState({ actualMonth: 0 }, this.state.actions.updateDaysCalendar);
                 }
                 else{
-                    this.setState({ actualMonth: this.state.actualMonth+1 });
+                    this.setState({ actualMonth: this.state.actualMonth+1 }, this.state.actions.updateDaysCalendar);
                 }
-            },
-            fillDays: () => {
-                let i = 1;
-                let rows = [];
-                const numberDays = Calendar.MONTHS[this.state.actualMonth].DAYS;
-            
-                while(i < numberDays){
-                    let cols = [];
-                    for(let k=1;k<=7;k++){
-                        cols.push(i);
-                        if(i >= numberDays){
-                            break;
-                        }
-                        i++;
-                    }
-                    rows.push(cols);
-                }
-                this.setState({rowsCalendar: rows});
             },
             DaysTable: () => {
                 return(
-                    this.state.rowsCalendar().map( (row,index) => {
+                    this.state.fillCalendar().map( (row,index) => {
                         return(
                             <tr key={index}>{
-                                row.map( (col) => {
-                                    return(<td key={col}>{col}</td>);
+                                row.map( (col, index) => {
+                                    return(<td key={index}>{col}</td>);
                                 } )
                             }
                             </tr>
@@ -103,6 +81,12 @@ class DatePicker extends React.Component{
             },
             selectDay: (numberDay) => {
 
+            },
+            changeYear(e){
+                this.setState({ actualYear: e.target.value }, this.state.actions.updateDaysCalendar );
+            },
+            updateDaysCalendar(){
+                this.setState( { daysCalendar: this.state.actions.DaysTable() });
             }
         }
     };
@@ -111,31 +95,38 @@ class DatePicker extends React.Component{
         super(props);
     }
 
+    componentDidMount(){
+        this.setState({
+            daysCalendar: this.state.actions.DaysTable()
+        });
+    }
+
     render(){
 
         return(
         <div>
             <form>
                 <div className="mt_ec_dp_form_section">
-                    <button onClick={()=>{this.prevMonth();}}>prev</button>
-                    <label>{this.state.monthNames[this.state.actualMonth]}</label>
-                    <select name="mt_ec_dp_year" id="mt_ec_dp_year">
+                    <button onClick={(e)=>{ e.preventDefault(); this.state.actions.prevMonth();}}>prev</button>
+                    <label>{Calendar.MONTHS[this.state.actualMonth].NAME}</label>
+                    <select onChange={ (e) => { this.setState({ actualYear: e.target.value }, this.state.actions.updateDaysCalendar);  } } name="mt_ec_dp_year" id="mt_ec_dp_year"
+                    value={this.state.actualYear}>
                         {
                             this.state.years.map((year)=>{
                                 return(
-                                <option key={year} value="{year}">{year}</option>
-                                );
+                                    <option key={year} value={year}>{year}</option>
+                                    );
                             })
                         }
                     </select>
-                    <button onClick={()=>{this.nextMonth();}}>next</button>
+                    <button onClick={(e)=>{ e.preventDefault(); this.state.actions.nextMonth();}}>next</button>
                 </div>
                 <div className="mt_ec_dp_form_section">
                     <table>
-                    <thead><tr>{this.state.dayWeekName.map( day => {return(<td key={day}>{day}</td>);} )}</tr></thead>
+                    <thead><tr>{Calendar.WEEK_DAYS.map( day => {return(<td key={day.ID}>{day.NAME}</td>);} )}</tr></thead>
                     <tbody>
                         {
-                            this.state.actions.DaysTable()
+                            this.state.daysCalendar
                         }
                     </tbody>
                     </table>

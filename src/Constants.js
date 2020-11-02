@@ -5,15 +5,36 @@ export const FIRST_DATE = {
     WEEK_DAY: 5
 };
 
-export const WEEK_DAYS = {
-    MONDAY    : 0,
-    TUESDAY   : 1,
-    WEDNESDAY : 2,
-    THURSDAY  : 3,
-    FRIDAY    : 4,
-    SATURDAY  : 5,
-    SUNDAY    : 6,
-};
+export const WEEK_DAYS = [
+    {
+        ID      : 0,
+        NAME    : "MONDAY",
+    },
+    {
+        ID      : 1,
+        NAME    : "TUESDAY"
+    },
+    {
+        ID      : 2,
+        NAME    : "WEDNESDAY"
+    },
+    {
+        ID      : 3,
+        NAME    : "THURSDAY"
+    },
+    {
+        ID      : 4,
+        NAME    : "FRIDAY"
+    },
+    {
+        ID      : 5,
+        NAME    : "SATURDAY"
+    },
+    {
+        ID      : 6,
+        NAME    : "SUNDAY"
+    },
+];
 
 export const MONTHS = [
     {
