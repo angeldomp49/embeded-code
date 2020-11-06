@@ -91,6 +91,7 @@ class DatePicker extends React.Component{
 
     constructor(props){
         super(props);
+        this.state.actions.updateDaysCalendar = this.state.actions.updateDaysCalendar.bind();
     }
 
     componentDidMount(){
