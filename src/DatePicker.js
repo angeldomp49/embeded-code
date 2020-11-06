@@ -30,7 +30,7 @@ class DatePicker extends React.Component{
                 let i = 1;
                 let dayMonth = 1;
                 let rows = [];
-                const numberDays = actualMonth.DAYS;
+                const numberDays = Calendar.MONTHS[actualMonth].DAYS;
                 const offset = Calculate.firstWeekDayMonth(actualMonth, actualYear);
                 const totalBoxes = numberDays + offset;
             
@@ -79,11 +79,10 @@ class DatePicker extends React.Component{
             changeYear: (e) => {
                 this.setState({ actualYear: e.target.value }, this.state.actions.updateDaysCalendar );
             },
-            updateDaysCalendar: (callback) => {
-                /*
+            updateDaysCalendar: (callback = null) => {
                 let {actualMonth, actualYear, actions, fillCalendar} = this.state;
                 this.setState( { daysCalendar: actions.DaysTable(fillCalendar(actualMonth, actualYear)) });
-                */
+                
                 this.setState( { daysCalendar: this.state.actions.DaysTable(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear)) }, callback);
             }
         }
@@ -94,7 +93,9 @@ class DatePicker extends React.Component{
     }
 
     componentDidMount(){
-        this.state.actions.updateDaysCalendar(console.log(this.state.daysCalendar));
+        console.log(this.state.actualMonth);
+        console.log(this.state.actualYear);
+        console.log(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear));
     }
 
     render(){
