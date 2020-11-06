@@ -1,5 +1,6 @@
 import * as Calculate from "../src/Calculate";
 import * as Constants from "../src/Constants";
+import DatePicker from "../src/DatePicker";
 
 export function testCalculate(){
 

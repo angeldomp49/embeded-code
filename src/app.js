@@ -17,5 +17,3 @@ class Root extends React.Component{
 }
 
 window.onload = () => { ReactDOM.render(<Root/>, document.querySelector("#root")); }
-
-testCalculate();

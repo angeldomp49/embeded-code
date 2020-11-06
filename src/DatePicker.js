@@ -52,7 +52,6 @@ class DatePicker extends React.Component{
                         }
                         i++;
                     }
-                    console.log("rows: "+rows);
                     rows.push(cols);
                 }
                 return rows;
@@ -60,11 +59,9 @@ class DatePicker extends React.Component{
             DaysTable: (arrayDays) => {
                 return(
                     arrayDays.map( (row,index) => {
-                        console.log("rows in daysTable: "+row);
                         return(
                             <tr key={index}>{
                                 row.map( (col, index) => {
-                                    console.log("col in daysTable: "+col);
                                     return(<td key={index}>{col}</td>);
                                 } )
                             }
@@ -80,10 +77,15 @@ class DatePicker extends React.Component{
                 this.setState({ actualYear: e.target.value }, this.state.actions.updateDaysCalendar );
             },
             updateDaysCalendar: (callback = null) => {
-                let {actualMonth, actualYear, actions, fillCalendar} = this.state;
-                this.setState( { daysCalendar: actions.DaysTable(fillCalendar(actualMonth, actualYear)) });
+                let {actualMonth, actualYear, actions} = this.state;
+                this.setState( { daysCalendar: actions.DaysTable(actions.fillCalendar(actualMonth, actualYear)) }, () => { console.log(this.state.daysCalendar); });
                 
-                this.setState( { daysCalendar: this.state.actions.DaysTable(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear)) }, callback);
+            },
+            testComponent: () => {
+                console.log(this.state.actualMonth);
+                console.log(this.state.actualYear);
+                console.log(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear));
+                console.log(this.state.actions.DaysTable(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear)));
             }
         }
     };
@@ -93,9 +95,7 @@ class DatePicker extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.state.actualMonth);
-        console.log(this.state.actualYear);
-        console.log(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear));
+        this.state.actions.updateDaysCalendar(() => { console.log(this.state.daysCalendar); });
     }
 
     render(){
