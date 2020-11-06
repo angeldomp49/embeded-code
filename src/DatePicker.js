@@ -79,13 +79,12 @@ class DatePicker extends React.Component{
             changeYear: (e) => {
                 this.setState({ actualYear: e.target.value }, this.state.actions.updateDaysCalendar );
             },
-            updateDaysCalendar: () => {
+            updateDaysCalendar: (callback) => {
                 /*
                 let {actualMonth, actualYear, actions, fillCalendar} = this.state;
                 this.setState( { daysCalendar: actions.DaysTable(fillCalendar(actualMonth, actualYear)) });
                 */
-               this.setState( { daysCalendar: this.state.actions.DaysTable(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear)) } ,
-               () =>{ console.log("logrado"); });
+                this.setState( { daysCalendar: this.state.actions.DaysTable(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear)) }, callback);
             }
         }
     };
@@ -95,10 +94,7 @@ class DatePicker extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.state.actions.updateDaysCalendar);
-        console.log(this.state.actualMonth);
-        this.state.actions.updateDaysCalendar();
-        console.log(this.state.daysCalendar);
+        this.state.actions.updateDaysCalendar(console.log(this.state.daysCalendar));
     }
 
     render(){
