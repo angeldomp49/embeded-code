@@ -76,26 +76,29 @@ class DatePicker extends React.Component{
             selectDay: (numberDay) => {
 
             },
-            changeYear(e){
+            changeYear: (e) => {
                 this.setState({ actualYear: e.target.value }, this.state.actions.updateDaysCalendar );
             },
-            updateDaysCalendar(){
+            updateDaysCalendar: () => {
                 /*
                 let {actualMonth, actualYear, actions, fillCalendar} = this.state;
                 this.setState( { daysCalendar: actions.DaysTable(fillCalendar(actualMonth, actualYear)) });
                 */
-               this.setState( { daysCalendar: this.state.actions.DaysTable(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear)) } );
+               this.setState( { daysCalendar: this.state.actions.DaysTable(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear)) } ,
+               () =>{ console.log("logrado"); });
             }
         }
     };
 
     constructor(props){
         super(props);
-        this.state.actions.updateDaysCalendar = this.state.actions.updateDaysCalendar.bind();
     }
 
     componentDidMount(){
+        console.log(this.state.actions.updateDaysCalendar);
+        console.log(this.state.actualMonth);
         this.state.actions.updateDaysCalendar();
+        console.log(this.state.daysCalendar);
     }
 
     render(){
