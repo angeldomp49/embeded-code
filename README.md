@@ -18,3 +18,5 @@ this.nextMonth = this.nextMonth.bind(this);
 por lo que declaramos las funciones en el state de la forma
 
 nextMonth: () => { // codigo}
+
+actualizando la nota anterior resulta que las funciones las estaba declarando fuera de la clase por lo que babel no las reconocia como relacionadas con ella, sin embargo gracias al plugin de proposal-class-properties siempre y cuando estén definidas dentro de la clase, no es necesario usar la palabra reservada function ni usar bind en el constructor, ya que este plugin automáticamente enlaza todo.

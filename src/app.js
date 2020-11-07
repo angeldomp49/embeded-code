@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DatePicker from './DatePicker';
+import Root from "./Root";
 
-import {testCalculate} from "../test/Calculate-test";
-
-class Root extends React.Component{
+class App extends React.Component{
     render(){
-        return(
-            <div>
-               <p>Hola mundo</p>
-               <DatePicker/>
-            </div>
-        );
+
     }
 }
 
-window.onload = () => { ReactDOM.render(<Root/>, document.querySelector("#root")); }
+window.addEventListener("load", function (){
+    ReactDOM.render(<Root/>, document.querySelector("#root"));
+}, false);
