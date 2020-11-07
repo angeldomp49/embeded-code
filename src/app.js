@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import DatePicker from './DatePicker';
+import Root from "./Root";
 
 
 class Root extends React.Component{

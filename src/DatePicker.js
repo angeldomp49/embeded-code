@@ -6,27 +6,27 @@ import DateRemote from "./DateRemote";
 class DatePicker extends React.Component{
 
     state = {
-        years: [ 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030 ],
-        actualMonth: 0,
-        actualYear: 2020,
-        daysCalendar: null,
-        daysTable2: null,
-        connection: new DateRemote(),
-        actions:{
+        members: {
+            years: [ 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030 ],
+            actualMonth: 0,
+            actualYear: 2020,
+            daysCalendar: null,
+        },
+        methods: {
             prevMonth: () => {
-                if( this.state.actualMonth == 0 ){
-                    this.setState({ actualMonth: 11 }, this.state.actions.updateDaysCalendar);
+                if( this.state.members.actualMonth == 0 ){
+                    this.setState({ actualMonth: 11 }, this.state.methods.updateDaysCalendar);
                 }
                 else{
-                    this.setState({ actualMonth: this.state.actualMonth-1 }, this.state.actions.updateDaysCalendar);
+                    this.setState({ actualMonth: this.state.members.actualMonth-1 }, this.state.methods.updateDaysCalendar);
                 }
             },
             nextMonth: () => {
-                if( this.state.actualMonth == 11 ){
-                    this.setState({ actualMonth: 0 }, this.state.actions.updateDaysCalendar);
+                if( this.state.members.actualMonth == 11 ){
+                    this.setState({ actualMonth: 0 }, this.state.methods.updateDaysCalendar);
                 }
                 else{
-                    this.setState({ actualMonth: this.state.actualMonth+1 }, this.state.actions.updateDaysCalendar);
+                    this.setState({ actualMonth: this.state.methods.actualMonth+1 }, this.state.methods.updateDaysCalendar);
                 }
             },
             fillCalendar: (actualMonth, actualYear, ) => {
@@ -84,24 +84,30 @@ class DatePicker extends React.Component{
 
             },
             changeYear: (e) => {
-                this.setState({ actualYear: e.target.value }, this.state.actions.updateDaysCalendar );
+                this.setState({ actualYear: e.target.value }, this.state.methods.updateDaysCalendar );
             },
             updateDaysCalendar: (callback = null) => {
-                let {actualMonth, actualYear, actions} = this.state;
-                this.setState( { daysCalendar: actions.DaysTable(actions.fillCalendar(actualMonth, actualYear)) }, () => { console.log(this.state.daysCalendar); });
+                let {actualMonth, actualYear} = this.state.members;
+                let {DaysTable, fillCalendar} = this.state.methods;
+                this.setState( { daysCalendar: DaysTable(fillCalendar(actualMonth, actualYear)) }, callback);
                 
             },
+            loadAppointments: () => {
+
+            },
             testComponent: () => {
-                console.log(this.state.actualMonth);
-                console.log(this.state.actualYear);
-                console.log(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear));
-                console.log(this.state.actions.DaysTable(this.state.actions.fillCalendar(this.state.actualMonth, this.state.actualYear)));
+                console.log(this.state.members.actualMonth);
+                console.log(this.state.members.actualYear);
+                console.log(this.state.methods.fillCalendar(this.state.members.actualMonth, this.state.members.actualYear));
+                console.log(this.state.methods.DaysTable(this.state.methods.fillCalendar(this.state.members.actualMonth, this.state.members.actualYear)));
             }
-        }
+        },
     };
 
     constructor(props){
         super(props);
+
+
     }
 
     componentDidMount(){
@@ -113,28 +119,28 @@ class DatePicker extends React.Component{
 
         return(
         <div>
-            <form>
+            <form className = { ( this.props.className ? this.props.className : "" ) + ( this.props.active ? "active" : "" ) } >
                 <div className="mt_ec_dp_form_section">
-                    <button onClick={(e)=>{ e.preventDefault(); this.state.actions.prevMonth();}}>prev</button>
-                    <label>{Calendar.MONTHS[this.state.actualMonth].NAME}</label>
-                    <select onChange={ (e) => { this.setState({ actualYear: e.target.value }, this.state.actions.updateDaysCalendar);  } } name="mt_ec_dp_year" id="mt_ec_dp_year"
-                    value={this.state.actualYear}>
+                    <button onClick={(e)=>{ e.preventDefault(); this.state.methods.prevMonth();}}>prev</button>
+                    <label>{Calendar.MONTHS[this.state.members.actualMonth].NAME}</label>
+                    <select onChange={ (e) => { this.setState({ actualYear: e.target.value }, this.state.methods.updateDaysCalendar);  } } name="mt_ec_dp_year" id="mt_ec_dp_year"
+                    value={this.state.members.actualYear}>
                         {
-                            this.state.years.map((year)=>{
+                            this.state.members.years.map((year)=>{
                                 return(
                                     <option key={year} value={year}>{year}</option>
                                     );
                             })
                         }
                     </select>
-                    <button onClick={(e)=>{ e.preventDefault(); this.state.actions.nextMonth();}}>next</button>
+                    <button onClick={(e)=>{ e.preventDefault(); this.state.methods.nextMonth();}}>next</button>
                 </div>
                 <div className="mt_ec_dp_form_section">
                     <table>
                     <thead><tr>{Calendar.WEEK_DAYS.map( day => {return(<td key={day.ID}>{day.NAME}</td>);} )}</tr></thead>
                     <tbody>
                         {
-                            this.state.daysCalendar
+                            this.state.members.daysCalendar
                         }
                     </tbody>
                     </table>
