@@ -1,11 +1,9 @@
-#root{
-    background-color: blue;
-    box-shadow: unset;
-    transition: 1s;
+
+.active{
+    display:block !important;
+    transition: 2s;
 }
-#root:hover{
-    transition: 1s;
-    background-color: brown;
-    box-shadow: 1px 1px 10px black;
-    transform: rotate(180deg);
+.default{
+    display: none;
+    transition: 2s;
 }
