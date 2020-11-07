@@ -119,7 +119,7 @@ class DatePicker extends React.Component{
 
         return(
         <div>
-            <form className = { ( this.props.className ? this.props.className : "" ) + ( this.props.active ? "active" : "" ) } >
+            <form className = { ( this.props.className ? this.props.className : "" ) + ( this.props.active ? "active" : "default" ) } >
                 <div className="mt_ec_dp_form_section">
                     <button onClick={(e)=>{ e.preventDefault(); this.state.methods.prevMonth();}}>prev</button>
                     <label>{Calendar.MONTHS[this.state.members.actualMonth].NAME}</label>

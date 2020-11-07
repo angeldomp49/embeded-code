@@ -14,8 +14,17 @@ class Root extends React.Component{
         methods: {
             datePicker: {
                 activate: () => {
-                    let { active } = this.state.members.datePicker;
-                    active = !active;
+                    let { ...rest } = this.state.members;
+                    let { active, ...rest2 } = this.state.members.datePicker;
+                    this.setState({
+                        members: {
+                            rest,
+                            datePicker:{
+                                rest2,
+                                active: !active
+                            }
+                        }
+                    }, () => { console.log(this.state.members.datePicker.active);});
                 },
             },
         },
@@ -27,7 +36,7 @@ class Root extends React.Component{
                 <DateForm className = "" activateDatepicker = { this.state.methods.datePicker.activate } >
                     <input type = "text" name = "name" placeholder = "name" />
                 </DateForm>
-                <DatePicker active = {this.state.members.datePicker.active} />
+                <DatePicker className = "" active = { this.state.members.datePicker.active } />
             </div>
         );
     }
