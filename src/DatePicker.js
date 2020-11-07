@@ -27,32 +27,39 @@ class DatePicker extends React.Component{
                 }
             },
             fillCalendar: (actualMonth, actualYear) => {
-                let i = 1;
+                let i = 0;
                 let dayMonth = 1;
                 let rows = [];
+
                 const numberDays = Calendar.MONTHS[actualMonth].DAYS;
                 const offset = Calculate.firstWeekDayMonth(actualMonth, actualYear);
-                const totalBoxes = numberDays + offset;
-            
-                while(i < totalBoxes-1){
+                let totalBoxes = (numberDays + offset) - 1; 
+
+                if( Calculate.isLeapYear(actualYear) && actualMonth == 1){
+                    totalBoxes++;
+                }
+                
+                while(i <= totalBoxes){ 
     
                     let cols = [];
-                    for(let k=1;k<=7;k++){
+                    for(let k=0;k<=6;k++){
     
-                        if( i <= offset ){
+                        if( i < offset ){
                             cols.push("");
                         }
                         else{
                             cols.push(dayMonth);
                             dayMonth++;
                         }
-    
                         if(i >= totalBoxes){
                             break;
                         }
                         i++;
                     }
                     rows.push(cols);
+                    if(i >= totalBoxes){
+                        break;
+                    }
                 }
                 return rows;
             },
