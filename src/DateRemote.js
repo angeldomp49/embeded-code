@@ -70,7 +70,7 @@ class DateRemote {
         }
     }
 
-    async mtGetDaysTable( actualMonthYear ){
+    async mtGetRemoteDaysTable( actualMonthYear ){
         let response = await fetch("http://localhost/date-picker/", {
             method : "POST",
             mode   : "cors",

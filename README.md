@@ -27,3 +27,13 @@ nada con cada dia a mostrarse, de manera que el date picker sepa como tratarlos,
     weekDay : 0 // dia de la semana
     enable  : true //si está disponible para ser seleccionado
 }
+
+el valor enviado en formato json del mes y año actual es:
+{
+    month: 0, //mes en numero
+    year: 11, //año en numero
+    febAndLeap: false // si es febrero y además es bisiesto el año
+}
+
+la estructura de la tabla en la base de datos es:
+
