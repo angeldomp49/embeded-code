@@ -18,3 +18,12 @@ this.nextMonth = this.nextMonth.bind(this);
 por lo que declaramos las funciones en el state de la forma
 
 nextMonth: () => { // codigo}
+
+Para DateRemote vamos a obtener de mtGetDaysTable un array de objetos json con información relacio
+nada con cada dia a mostrarse, de manera que el date picker sepa como tratarlos, esta información va a tener la siguiente estructura:
+
+{
+    number  : 0 //dia del mes
+    weekDay : 0 // dia de la semana
+    enable  : true //si está disponible para ser seleccionado
+}
