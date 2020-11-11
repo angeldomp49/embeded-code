@@ -34,3 +34,41 @@ export function firstWeekDayMonth(month, year){
 
     return firstDay;
 }
+
+export function fillCalendar(actualMonth, actualYear){
+    let i = 0;
+    let dayMonth = 1;
+    let rows = [];
+
+    const numberDays = Calendar.MONTHS[actualMonth].DAYS;
+    const offset = firstWeekDayMonth(actualMonth, actualYear);
+    let totalBoxes = (numberDays + offset) - 1; 
+
+    if( isLeapYear(actualYear) && actualMonth == 1){
+        totalBoxes++;
+    }
+    
+    while(i <= totalBoxes){ 
+
+        let cols = [];
+        for(let k=0;k<=6;k++){
+
+            if( i < offset ){
+                cols.push("");
+            }
+            else{
+                cols.push(dayMonth);
+                dayMonth++;
+            }
+            if(i >= totalBoxes){
+                break;
+            }
+            i++;
+        }
+        rows.push(cols);
+        if(i >= totalBoxes){
+            break;
+        }
+    }
+    return rows;
+}

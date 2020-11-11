@@ -9,3 +9,7 @@
     box-shadow: 1px 1px 10px black;
     transform: rotate(180deg);
 }
+.disable-element {
+    background-color: blue;
+    color: red;
+}

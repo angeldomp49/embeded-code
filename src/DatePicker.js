@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Calendar from "./Constants";
 import * as Calculate from "./Calculate";
+import DateRemote from "./DateRemote";
 
 class DatePicker extends React.Component{
 
@@ -9,6 +10,8 @@ class DatePicker extends React.Component{
         actualMonth: 0,
         actualYear: 2020,
         daysCalendar: null,
+        daysTable2: null,
+        connection: new DateRemote(),
         actions:{
             prevMonth: () => {
                 if( this.state.actualMonth == 0 ){
@@ -26,7 +29,7 @@ class DatePicker extends React.Component{
                     this.setState({ actualMonth: this.state.actualMonth+1 }, this.state.actions.updateDaysCalendar);
                 }
             },
-            fillCalendar: (actualMonth, actualYear) => {
+            fillCalendar: (actualMonth, actualYear, ) => {
                 let i = 0;
                 let dayMonth = 1;
                 let rows = [];
@@ -67,9 +70,9 @@ class DatePicker extends React.Component{
                 return(
                     arrayDays.map( (row,index) => {
                         return(
-                            <tr key={index}>{
+                            <tr key={index} >{
                                 row.map( (col, index) => {
-                                    return(<td key={index}>{col}</td>);
+                                    return(<td key={index} className = {""+ ( this.state.daysTable2.days[col].enable ? "" : "disable-element" )}>{col}</td>);
                                 } )
                             }
                             </tr>
@@ -102,6 +105,7 @@ class DatePicker extends React.Component{
     }
 
     componentDidMount(){
+        this.setState({ daysTable2 : connection.mtGetRemoteDaysTable( { actualMonth: this.state.actualMonth, actualYear: this.state.actualYear } ) });
         this.state.actions.updateDaysCalendar(() => { console.log(this.state.daysCalendar); });
     }
 

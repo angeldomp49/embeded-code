@@ -1,0 +1,379 @@
+{
+    "daysTable":{
+        "days": [
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 0,
+                    "weekDay" : 2,
+                    "yearDay" : 0,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 1,
+                    "weekDay" : 3,
+                    "yearDay" : 1,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 2,
+                    "weekDay" : 4,
+                    "yearDay" : 2,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 3,
+                    "weekDay" : 5,
+                    "yearDay" : 3,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 4,
+                    "weekDay" : 6,
+                    "yearDay" : 4,
+                    "toString": "00-00-2020"
+                },
+                "enable" : false,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 5,
+                    "weekDay" : 0,
+                    "yearDay" : 5,
+                    "toString": "00-00-2020"
+                },
+                "enable" : false,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 6,
+                    "weekDay" : 1,
+                    "yearDay" : 6,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 7,
+                    "weekDay" : 2,
+                    "yearDay" : 7,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 8,
+                    "weekDay" : 3,
+                    "yearDay" : 8,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 9,
+                    "weekDay" : 4,
+                    "yearDay" : 9,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 10,
+                    "weekDay" : 5,
+                    "yearDay" : 10,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 11,
+                    "weekDay" : 6,
+                    "yearDay" : 11,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 12,
+                    "weekDay" : 0,
+                    "yearDay" : 12,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 13,
+                    "weekDay" : 1,
+                    "yearDay" : 13,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 14,
+                    "weekDay" : 2,
+                    "yearDay" : 14,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 15,
+                    "weekDay" : 3,
+                    "yearDay" : 15,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 16,
+                    "weekDay" : 4,
+                    "yearDay" : 16,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 17,
+                    "weekDay" : 5,
+                    "yearDay" : 17,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 18,
+                    "weekDay" : 6,
+                    "yearDay" : 18,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 19,
+                    "weekDay" : 0,
+                    "yearDay" : 19,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 20,
+                    "weekDay" : 1,
+                    "yearDay" : 20,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 21,
+                    "weekDay" : 2,
+                    "yearDay" : 21,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 22,
+                    "weekDay" : 3,
+                    "yearDay" : 22,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 23,
+                    "weekDay" : 4,
+                    "yearDay" : 23,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 24,
+                    "weekDay" : 5,
+                    "yearDay" : 24,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 25,
+                    "weekDay" : 6,
+                    "yearDay" : 25,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 26,
+                    "weekDay" : 0,
+                    "yearDay" : 26,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 27,
+                    "weekDay" : 1,
+                    "yearDay" : 27,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 28,
+                    "weekDay" : 2,
+                    "yearDay" : 28,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 29,
+                    "weekDay" : 3,
+                    "yearDay" : 29,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            },
+            { 
+                "date": {
+                    "month": 0,
+                    "year" : 2020,
+                    "monthDay": 30,
+                    "weekDay" : 4,
+                    "yearDay" : 30,
+                    "toString": "00-00-2020"
+                },
+                "enable" : true,
+                "turn"   : 0
+            }
+        ],
+        "offset": 2
+    }
+}
