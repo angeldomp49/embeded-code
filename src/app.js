@@ -16,6 +16,12 @@ class App extends React.Component{
 }
 
 window.onload = () => { 
+
+    let mt_dp_portals = document.querySelectorAll(".mt_dp_jsportal_dateform");
+    mt_dp_portals.forEach( (elem) => {
+        ReactDOM.createPortal(<Root/>, elem);
+    } );
+
     ReactDOM.render(<Root/>, document.querySelector("#root")); 
 
 }
